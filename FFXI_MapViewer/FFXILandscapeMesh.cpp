@@ -4,7 +4,6 @@
 
 #include "IMeshBuffer.h"
 #include "OpenGLDriver.h"
-#include "myEnum.h"
 #include "DDS2Bmp.h"
 #include "SceneManager.h"
 #include "Utility.h"
@@ -18,7 +17,7 @@
 
 //#include <Windows.h>
 
-char ffxidir[512]="E:\\Program Files (x86)\\PlayOnline2\\SquareEnix\\FINAL FANTASY XI\\";
+char ffxidir[512]="C:\\Program Files (x86)\\PlayOnline\\SquareEnix\\FINAL FANTASY XI\\";
 
 using namespace std;
 
