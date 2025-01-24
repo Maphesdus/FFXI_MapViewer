@@ -1,0 +1,33 @@
+#version 330 core
+
+// Interpolated values from the vertex shaders
+in vec2 UV;
+in vec3 Position_worldspace;
+in vec3 Normal_cameraspace;
+in vec4 fragmentColor;
+
+// Ouput data
+out vec4 color;
+
+// Values that stay constant for the whole mesh.
+uniform sampler2D myTextureSampler;
+uniform mat4 MV;
+uniform int iMultipler;
+uniform int iuseAlpha;
+uniform vec3 iMatColor;
+
+void main(){
+	vec4 myRGBA= texture2D(myTextureSampler, UV).rgba;
+	vec3 ambient= vec3(0.1,0.1,0.1)*myRGBA.rgb;
+	color.rgb = clamp(myRGBA.rgb*fragmentColor.rgb + ambient,0.0,1.0);
+
+	if(iuseAlpha) {
+		color.a = clamp(myRGBA.a*fragmentColor.a*iMultipler,0.0,1.0);
+	}
+	else
+		color.a = 1.0;
+
+	if(color.a <0.1) {
+		discard;
+	}
+}
